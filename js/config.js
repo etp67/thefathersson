@@ -19,15 +19,18 @@ window.SITE = {
    *   Find it by searching your business on Google Maps -> Share -> Copy link.
    * googleReview: the "Ask for reviews" link from your Google Business
    *   Profile dashboard (looks like https://g.page/r/XXXX/review).
-   * booking: if you turn on bookings/quotes in Google Business Profile,
-   *   or use a scheduler (Square, Calendly, Housecall Pro…), paste that link.
-   *   If left blank, the "Book" buttons call your phone instead.
+   * bookingCalendar: the Google Calendar "Appointment schedule" booking page
+   *   link (see README). When set, it is shown right on the site in the
+   *   "Book" section and customers can pick an open time on Zach's calendar.
+   * booking: OR a link to any other scheduler (Square, Calendly…). Used only
+   *   if bookingCalendar is blank. If both are blank, "Book" buttons call.
    */
   links: {
-    googleProfile: "",
-    googleReview: "",
-    facebook: "",
-    facebookReviews: "",
+    googleProfile: "https://share.google/y7kUdznFhOlFfYcak",
+    googleReview: "https://g.page/r/CXl_xawIMauSEBM/review",
+    facebook: "https://www.facebook.com/thefatherssonhandy",
+    facebookReviews: "https://www.facebook.com/thefatherssonhandy/reviews",
+    bookingCalendar: "",
     booking: ""
   },
 
@@ -35,12 +38,16 @@ window.SITE = {
    * REVIEWS — copy real reviews from Google or Facebook here.
    * source: "google" or "facebook"
    * rating: 1–5 (Facebook "recommends" can just use 5)
+   * url: (optional) link to the original review
    *
    * Example:
    * { name: "Jane D.", source: "google", rating: 5, date: "Oct 2026",
    *   text: "Zach pressure washed our driveway and it looks brand new." },
    */
   reviews: [
+    { name: "Kelsey Page", source: "facebook", rating: 5, date: "Oct 2026",
+      url: "https://www.facebook.com/share/p/19tWtDvPWv/",
+      text: "Zach did an amazing job power washing the front of our house. We have an 80 year old home and he took such good care of it. Zach also washed my car and my wheels have not shined like that in Lord knows how long. I highly recommend The Father's Son Handy Works for any and all things!!" }
   ],
 
   /*
@@ -54,5 +61,13 @@ window.SITE = {
    *   caption: "Driveway wash — Brandon", category: "pressure" },
    */
   gallery: [
+    { src: "assets/gallery/patio-aggregate.jpg",
+      caption: "Exposed-aggregate patio", category: "pressure" },
+    { src: "assets/gallery/commercial-entry-steps.jpg",
+      caption: "Commercial entrance & steps", category: "pressure" },
+    { src: "assets/gallery/dumpster-pad.jpg",
+      caption: "Commercial dumpster pad", category: "pressure" },
+    { src: "assets/gallery/dumpster-pad-detail.jpg",
+      caption: "Dumpster pad — up close", category: "pressure" }
   ]
 };

@@ -26,9 +26,22 @@
   });
 
   document.querySelectorAll(".js-book").forEach(function (a) {
-    if (links.booking) openInNewTab(a, links.booking);
+    if (links.bookingCalendar) a.href = "#book";
+    else if (links.booking) openInNewTab(a, links.booking);
     else a.href = phoneHref;
   });
+
+  /* ---------- Booking calendar ---------- */
+  var bookingFrame = document.getElementById("booking-frame");
+  if (bookingFrame && links.bookingCalendar) {
+    var iframe = el("iframe");
+    iframe.src = links.bookingCalendar;
+    iframe.title = "Book an appointment with The Father's Son Handy Works";
+    iframe.loading = "lazy";
+    bookingFrame.appendChild(iframe);
+    bookingFrame.hidden = false;
+    document.getElementById("booking-fallback").hidden = true;
+  }
 
   document.querySelectorAll(".footer-social").forEach(function (p) {
     if (!p.querySelector("a:not([hidden])")) p.hidden = true;
@@ -75,6 +88,11 @@
       var cap = el("figcaption", null, r.name || "Customer");
       if (r.date) cap.appendChild(el("span", null, " · " + r.date));
       fig.appendChild(cap);
+      if (r.url) {
+        var link = el("a", "review-link", "View on " + (r.source === "facebook" ? "Facebook" : "Google"));
+        openInNewTab(link, r.url);
+        fig.appendChild(link);
+      }
       reviewList.appendChild(fig);
     });
   } else {
